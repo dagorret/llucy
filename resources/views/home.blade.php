@@ -1,30 +1,41 @@
-{{-- resources/views/home.blade.php --}}
 <x-app-layout>
+    {{-- Si no querés el header clásico de Breeze, lo podés borrar --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Inicio
         </h2>
     </x-slot>
 
-    <div class="p-6">
-        {{-- Texto --}}
-        <p class="mb-4 text-gray-700">
-            Bienvenido, estás logueado en Lucy.
-        </p>
+    <div class="py-12">
+        <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white shadow-sm sm:rounded-xl p-8">
+                <div class="flex flex-col items-center justify-center text-center space-y-4">
+                    {{-- Logo centrado --}}
+                    <x-application-logo class="h-24 w-auto" />
 
-        {{-- Botones --}}
-        <div class="flex gap-3">
-            {{-- Botón Perfil --}}
-            <a href="{{ route('profile.edit') }}"
-               class="inline-flex items-center px-4 py-2 bg-gray-800 text-white rounded">
-                Perfil
-            </a>
+                    {{-- Texto FCE::Lucy --}}
+                    <h1 class="text-3xl font-bold text-gray-800">
+                        FCE::Lucy
+                    </h1>
 
-            {{-- Botón Dashboard (Filament) --}}
-            <a href="{{ url('/dashboard') }}"
-               class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded">
-                Dashboard
-            </a>
+                    <p class="text-gray-600">
+                        Bienvenido, estás logueado en Lucy.
+                    </p>
+
+                    {{-- Botones, links, etc. opcionales --}}
+                    <div class="mt-4 flex gap-4">
+                        <a href="{{ route('profile.edit') }}"
+                           class="px-4 py-2 text-sm font-semibold rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+                            Perfil
+                        </a>
+
+                        <a href="{{ url('/dashboard') }}" {{-- ajustá esta ruta al panel de Filament --}}
+                           class="px-4 py-2 text-sm font-semibold rounded-lg bg-slate-100 text-slate-800 hover:bg-slate-200">
+                            Ir al panel de administración
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
