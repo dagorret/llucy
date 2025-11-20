@@ -10,6 +10,8 @@ class Plan extends Model
 {
     use HasFactory;
 
+    protected $table = 'planes';
+
     protected $fillable = [
         'codigo',
         'nombre',
@@ -19,6 +21,11 @@ class Plan extends Model
     protected $casts = [
         'fecha_desde' => 'date',
     ];
+
+    public function carreras(): HasMany
+    {
+        return $this->hasMany(Carrera::class);
+    }
 
     public function materias(): HasMany
     {
