@@ -23,6 +23,8 @@ return new class extends Migration
             $table->enum('estado_actual', ['preinscripto', 'aspirante', 'ingresante', 'alumno'])->default('preinscripto');
             $table->date('fecha_ingreso')->nullable();
             $table->string('estado_ingreso')->nullable();
+            $table->string('teams_password')->nullable();
+            $table->longText('teams_payload')->nullable();
             $table->timestamps();
 
             $table->unique(['tipo_documento', 'dni']);

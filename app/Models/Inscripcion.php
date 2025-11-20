@@ -18,6 +18,7 @@ class Inscripcion extends Model
         'catedra_id',
         'fecha_inscripcion',
         'estado',
+        'moodle_payload',
     ];
 
     protected $casts = [

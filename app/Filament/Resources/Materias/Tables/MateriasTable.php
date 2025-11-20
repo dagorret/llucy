@@ -6,6 +6,8 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
+use AlperenErsoy\FilamentExport\Actions\FilamentExportHeaderAction;
 use Filament\Tables\Table;
 
 class MateriasTable
@@ -13,6 +15,7 @@ class MateriasTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->defaultSort('codigo')
             ->columns([
                 TextColumn::make('plan.codigo')
                     ->label('Plan')
@@ -42,12 +45,20 @@ class MateriasTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('plan_id')
+                    ->label('Plan')
+                    ->relationship('plan', 'nombre')
+                    ->searchable()
+                    ->preload(),
             ])
             ->recordActions([
                 EditAction::make(),
             ])
             ->toolbarActions([
+                FilamentExportHeaderAction::make('export')
+                    ->label('Exportar')
+                    ->color('primary')
+                    ->defaultFormat('xlsx'),
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),

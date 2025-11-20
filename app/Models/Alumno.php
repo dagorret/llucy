@@ -24,6 +24,8 @@ class Alumno extends Model
         'estado_actual',
         'fecha_ingreso',
         'estado_ingreso',
+        'teams_password',
+        'teams_payload',
     ];
 
     protected $casts = [

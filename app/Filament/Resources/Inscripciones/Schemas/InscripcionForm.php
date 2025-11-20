@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Inscripciones\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
 
 class InscripcionForm
@@ -41,6 +42,13 @@ class InscripcionForm
                     ])
                     ->default('confirmada')
                     ->required(),
+                Textarea::make('moodle_payload')
+                    ->label('Payload Moodle')
+                    ->rows(4)
+                    ->disabled()
+                    ->dehydrated(false)
+                    ->columnSpanFull()
+                    ->helperText('Últimos payloads enviados a Moodle. Solo lectura.'),
             ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Alumnos\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
@@ -32,7 +33,8 @@ class AlumnoForm
                     ->email()
                     ->required(),
                 TextInput::make('email_institucional')
-                    ->email(),
+                    ->email()
+                    ->helperText('Se completa al crear la cuenta Teams'),
                 DatePicker::make('fecha_nacimiento')
                     ->label('Fecha de nacimiento'),
                 TextInput::make('cohorte')
@@ -55,6 +57,19 @@ class AlumnoForm
                     ->label('Fecha de ingreso'),
                 TextInput::make('estado_ingreso')
                     ->label('Estado de ingreso'),
+                TextInput::make('teams_password')
+                    ->label('Contraseña Teams')
+                    ->password()
+                    ->revealable()
+                    ->dehydrated(false)
+                    ->disabled()
+                    ->helperText('Se genera al crear la cuenta Teams. Solo lectura.'),
+                Textarea::make('teams_payload')
+                    ->label('Payload Teams')
+                    ->rows(3)
+                    ->disabled()
+                    ->dehydrated(false)
+                    ->hint('Último payload enviado a la API de Teams. Solo lectura.'),
             ]);
     }
 }
